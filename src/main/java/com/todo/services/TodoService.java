@@ -1,5 +1,7 @@
 package com.todo.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,4 +18,14 @@ public class TodoService {
 		Todo obj = repo.findById(id).orElse(null);
 		return obj;
 	}
+	public List<Todo> buscarTodos() {
+		return this.repo.findAll();
+	}
+	
+	public Todo inserir(Todo todo) {
+		
+		Todo todoInserido = this.repo.save(todo);
+		return todoInserido;
+	}
+	
 }
